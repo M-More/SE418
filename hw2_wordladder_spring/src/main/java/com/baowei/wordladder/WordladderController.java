@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
+
+import com.baowei.wordladder.exception.Invalidinput;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WordladderController {
 
     @RequestMapping("/showladder")
-    public Stack<String> showladder(@RequestParam(value = "word1") String w1, @RequestParam(value = "word2") String w2) {
+    public Stack<String> showladder(@RequestParam(value = "word1") String w1, @RequestParam(value = "word2") String w2) throws Exception{
         Set<String> dic = new HashSet<String>();
         String[] alphabet = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
                 "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
@@ -30,6 +32,19 @@ public class WordladderController {
             fr.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        // Invalid input error handling
+        if (w1.length() != w2.length()){
+            throw new Invalidinput("The two words must be the same length.");
+        }
+
+        if (w1.equals(w2)){
+            throw new Invalidinput("The two words must be different.");
+        }
+
+        if ((! dic.contains(w1)) || (! dic.contains(w2))){
+            throw new Invalidinput("The two words must be found in the dictionary.");
         }
 
         Stack<String> ladder;
@@ -81,5 +96,7 @@ public class WordladderController {
         }
         return null;
     }
+
+
 }
 
