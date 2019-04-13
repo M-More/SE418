@@ -25,7 +25,7 @@ public class WordladderApplicationTests {
     public void setup(){
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
-    
+
     @Test
     public void whenQuerySuccess () throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/showladder")
