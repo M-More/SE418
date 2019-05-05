@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        function login() {
+            $.ajax({
+                type: "GET",
+                dataType: String,
+                url: "http://localhost:8080/check",
+                crossDomain: true,
+                processData: false,
+                data: $('#form1').serialize(),
+                success: function (result) {
+                    console.log(result);
+                    if (result.resultCode == 200) {
+                        console.log("SUCCESS");
+                    }
+                    ;
+                },
+                error : function() {
+                    console.log("异常！");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<form id="loginform">
+    <h4>登录</h4>
+    <div>
+        <input type="text" name="username" placeholder="用户名">
+        <input type="password" name="password" placeholder="密码">
+        <input type="button" value="登录" name="submit" onclick="login()">
+    </div>
+</form>
+</body>
+</html>
