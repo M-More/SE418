@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 public class Consumer implements Runnable {
 	private BlockingQueue<RequestData> queue;
     private static final int SLEEPTIME=1000;
-    private long timeout = 100;
+    private long timeout = 300;
 	
 	public Consumer(BlockingQueue<RequestData> queue) {		
 		this.queue = queue;
