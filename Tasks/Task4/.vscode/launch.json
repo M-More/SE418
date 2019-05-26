@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Task4_668c8132"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GenQueueTest",
+            "request": "launch",
+            "mainClass": "GenQueueTest",
+            "projectName": "Task4_668c8132"
+        }
+    ]
+}
